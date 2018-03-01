@@ -17,7 +17,7 @@
  * under the License.
  */
 
-package org.elasticsearch.plugin.example;
+package io.ysz.myesplugin;
 
 import org.elasticsearch.mocksocket.MockSocket;
 import org.elasticsearch.test.ESTestCase;

@@ -6,3 +6,6 @@
 out
 .idea/libraries
 .idea/modules
+build
+build-idea
+*.log

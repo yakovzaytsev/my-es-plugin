@@ -17,7 +17,7 @@
  * under the License.
  */
 
-package org.elasticsearch.plugin.example;
+package io.ysz.myesplugin;
 
 import org.elasticsearch.cluster.metadata.IndexNameExpressionResolver;
 import org.elasticsearch.cluster.node.DiscoveryNodes;

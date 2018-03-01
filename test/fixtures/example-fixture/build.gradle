@@ -17,23 +17,25 @@
  * under the License.
  */
 
-package org.elasticsearch.plugin.example;
+// // This build script needs to use external libraries
+// buildscript {
+//   repositories {
+//     mavenCentral()
+//     jcenter()
+//   }
 
-import com.carrotsearch.randomizedtesting.annotations.Name;
-import com.carrotsearch.randomizedtesting.annotations.ParametersFactory;
+//   dependencies {
+//     classpath "org.elasticsearch.gradle:build-tools:6.1.3"
+//   }
+// }
 
-import org.elasticsearch.test.rest.yaml.ClientYamlTestCandidate;
-import org.elasticsearch.test.rest.yaml.ESClientYamlSuiteTestCase;
+// apply plugin: 'elasticsearch.build'
+test.enabled = false
+// // Not published so no need to assemble
+// tasks.remove(assemble)
+// build.dependsOn.remove('assemble')
 
-public class JvmExampleClientYamlTestSuiteIT extends ESClientYamlSuiteTestCase {
+licenseFile = rootProject.file('LICENSE.txt')
 
-    public JvmExampleClientYamlTestSuiteIT(@Name("yaml") ClientYamlTestCandidate testCandidate) {
-        super(testCandidate);
-    }
-
-    @ParametersFactory
-    public static Iterable<Object[]> parameters() throws Exception {
-        return ESClientYamlSuiteTestCase.createParameters();
-    }
-}
+noticeFile = rootProject.file('NOTICE.txt')
 

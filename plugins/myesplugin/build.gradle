@@ -53,25 +53,25 @@ build.dependsOn.remove('assemble')
 // no unit tests
 test.enabled = false
 
-//configurations {
-//  exampleFixture
-//}
+configurations {
+  exampleFixture
+}
 
-//dependencies {
-//  exampleFixture project(':test:fixtures:example-fixture')
-//}
+dependencies {
+  exampleFixture project(':test:fixtures:example-fixture')
+}
 
-//task exampleFixture(type: org.elasticsearch.gradle.test.AntFixture) {
-//  dependsOn project.configurations.exampleFixture
-//  executable = new File(project.javaHome, 'bin/java')
-//  args '-cp', "${ -> project.configurations.exampleFixture.asPath }",
-//       'example.ExampleTestFixture',
-//       baseDir
-//}
+task exampleFixture(type: org.elasticsearch.gradle.test.AntFixture) {
+  dependsOn project.configurations.exampleFixture
+  executable = new File(project.javaHome, 'bin/java')
+  args '-cp', "${ -> project.configurations.exampleFixture.asPath }",
+       'example.ExampleTestFixture',
+       baseDir
+}
 
-//integTestCluster {
-//  dependsOn exampleFixture
-//}
-//integTestRunner {
-//  systemProperty 'external.address', "${ -> exampleFixture.addressAndPort }"
-//}
+integTestCluster {
+  dependsOn exampleFixture
+}
+integTestRunner {
+  systemProperty 'external.address', "${ -> exampleFixture.addressAndPort }"
+}

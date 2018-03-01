@@ -12,9 +12,35 @@
 
 2. **or** open IDEA project and
 
-3. Build
+3. Build (in IDEA)
 
     should not fail 
+
+    or **create a zip distribution** in order to install plugin
+    
+        my-es-plugin$ gradle clean check 
+
+    and then
+
+        my-es-plugin$ ls plugins/myesplugin/build/distributions
+        myesplugin.jar	myesplugin.zip
+
+4. and then install to es
+
+        elasticsearch-6.1.3$ ./bin/elasticsearch-plugin install file:///Users/ysz/src/my-es-plugin/plugins/myesplugin/build/distributions/myesplugin.zip
+        -> Downloading file:///Users/ysz/src/my-es-plugin/plugins/myesplugin/build/distributions/myesplugin.zip
+        [=================================================] 100%   
+        -> Installed myesplugin
+
+## How to enable and check the plugin
+
+start es
+
+    elasticsearch-6.1.3$ ./bin/elasticsearch
+
+then 
+
+TBW
 
 ## Get Elasticsearch up and running in IDEA
 
