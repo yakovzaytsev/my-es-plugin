@@ -17,9 +17,34 @@
  * under the License.
  */
 
+// XXX needs at least Gradle 4.3
+task wrapper(type: Wrapper) {
+    gradleVersion = '4.3'
+}
+
+// This build script needs to use external libraries
+buildscript {
+  repositories {
+    mavenCentral()
+    // find com.netflix.nebula:nebula-core:3.0.0
+    jcenter()
+  }
+
+  dependencies {
+    classpath "org.elasticsearch.gradle:build-tools:6.1.3"
+  }
+}
+
+apply plugin: 'elasticsearch.esplugin'
+apply plugin: 'idea'
+
+licenseFile = rootProject.file('LICENSE.txt')
+
+noticeFile = rootProject.file('NOTICE.txt')
+
 esplugin {
   description 'Demonstrates all the pluggable Java entry points in Elasticsearch'
-  classname 'org.elasticsearch.plugin.example.JvmExamplePlugin'
+  classname 'io.ysz.myesplugin.JvmExamplePlugin'
 }
 // Not published so no need to assemble
 tasks.remove(assemble)
@@ -28,25 +53,25 @@ build.dependsOn.remove('assemble')
 // no unit tests
 test.enabled = false
 
-configurations {
-  exampleFixture
-}
+//configurations {
+//  exampleFixture
+//}
 
-dependencies {
-  exampleFixture project(':test:fixtures:example-fixture')
-}
+//dependencies {
+//  exampleFixture project(':test:fixtures:example-fixture')
+//}
 
-task exampleFixture(type: org.elasticsearch.gradle.test.AntFixture) {
-  dependsOn project.configurations.exampleFixture
-  executable = new File(project.javaHome, 'bin/java')
-  args '-cp', "${ -> project.configurations.exampleFixture.asPath }",
-       'example.ExampleTestFixture',
-       baseDir
-}
+//task exampleFixture(type: org.elasticsearch.gradle.test.AntFixture) {
+//  dependsOn project.configurations.exampleFixture
+//  executable = new File(project.javaHome, 'bin/java')
+//  args '-cp', "${ -> project.configurations.exampleFixture.asPath }",
+//       'example.ExampleTestFixture',
+//       baseDir
+//}
 
-integTestCluster {
-  dependsOn exampleFixture
-}
-integTestRunner {
-  systemProperty 'external.address', "${ -> exampleFixture.addressAndPort }"
-}
+//integTestCluster {
+//  dependsOn exampleFixture
+//}
+//integTestRunner {
+//  systemProperty 'external.address', "${ -> exampleFixture.addressAndPort }"
+//}

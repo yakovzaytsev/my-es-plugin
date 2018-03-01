@@ -1,6 +1,22 @@
 # my-es-plugin
 
-This is how to get new laptop to run this project
+## This is how to get new laptop to run this project
+
+0. Gradle 4.3 or above is required
+
+        $ brew install gradle
+
+1. Import from existing sources and choose Gradle and then
+
+    set Gradle home to /usr/local/Cellar/gradle/4.4/libexec
+
+2. **or** open IDEA project and
+
+3. Build
+
+    should not fail 
+
+## Get Elasticsearch up and running in IDEA
 
 0. Download zip of [84950a1904](https://github.com/elastic/elasticsearch/archive/84950a1904119b4fd4d5f3135dc47cedaf832524.zip) from elastic/elasticsearch
 

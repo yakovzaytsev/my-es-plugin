@@ -1,0 +1,8 @@
+.gradle
+.idea/misc.xml
+.idea/workspace.xml
+*~
+.DS_Store
+out
+.idea/libraries
+.idea/modules
